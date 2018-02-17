@@ -87,3 +87,11 @@ start () {
 stop () {
 	sudo systemctl stop "$1"
 }
+
+# MISC
+
+## mkr-update
+## Usage: mkr-update
+mkr-update () {
+	curl https://raw.githubusercontent.com/MKRhere/wiki/master/scripts/mkr.sh -o ~/.mkr/mkr.sh
+}

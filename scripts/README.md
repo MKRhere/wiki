@@ -15,7 +15,7 @@ echo "source ~/.mkr/mkr.sh" >> ~/.bashrc
 echo "source ~/.mkr/mkr.sh" >> ~/.zshrc
 
 # updating script
-curl https://raw.githubusercontent.com/MKRhere/wiki/master/scripts/mkr.sh -o ~/.mkr/mkr.sh
+mkr-update
 ```
 
 ## Commands
