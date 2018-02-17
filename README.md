@@ -17,7 +17,6 @@ dirmngr is a server for managing and downloading OpenPGP and X.509 certificates,
 ```bash
 sudo apt-get install dirmngr
 ```
-
 ### MongoDB
 
 MongoDB doesn't have official packages for Debian Stretch at this moment, so we'd have to install from the Jessie repository which will throw an error saying the dependency `libssl1.0.0` will not be satisfied.
@@ -41,5 +40,15 @@ rm -f "$TEMP_DEB"
 sudo apt-get install mongodb-org
 ```
 
-</details>
+### PulseAudio
+
+Had an issue on Debian Stretch on my Dell PC where pulseaudio daemon won't autostart. This solved the problem each time:
+
+```bash
+pulseaudio --start
+sudo killall -9 pulseaudio
+sudo systemctl --user enable pulseaudio.socket
+pulseaudio --start
+```
+
 </details>
