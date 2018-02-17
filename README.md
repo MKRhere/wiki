@@ -1,10 +1,12 @@
 # mkrhere/wiki
 
+A private repo for common problems.
+
 ## Debian GNU/Linux
 
 ### AMD Radeon drivers
 
-This package contains the binary firmware for AMD/ATI graphics chips supported by the radeon, amdgpu and r128 drivers, not included in the free repos.
+This package contains the binary firmware for AMD/ATI graphics chips supported by the radeon, amdgpu and r128 drivers, not included in the official ISO.
 
 ```bash
 sudo apt-get update
