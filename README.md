@@ -31,6 +31,39 @@ sudo apt-get update
 sudo apt-get install firmware-iwlwifi
 ```
 
+### nodejs
+
+nodejs apt repository is several years behind, so add nodesource repos. nodejs 9.x (current version)
+
+```bash
+# Using Debian
+sudo su
+curl -sL https://deb.nodesource.com/setup_9.x | bash -
+apt-get install -y nodejs
+```
+
+#### Installing and using nvm
+
+You may need to use multiple node versions on the same machine. `nvm` will be very useful in this case.
+
+```bash
+# using curl
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
+# or wget
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
+# Optional: Add "| NVM_DIR=/path/to/nvm bash" to the end of the above line if you need to change install directory
+# "| NVM_DIR=/usr/local/nvm bash" for global (all users) install
+```
+
+And then add this to your `~/.bashrc` or `~/.zshrc`:
+
+```bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
+
 ### MongoDB
 
 MongoDB doesn't have official packages for Debian Stretch at this moment, so we'd have to install from the Jessie repository which will throw an error saying the dependency `libssl1.0.0` will not be satisfied.

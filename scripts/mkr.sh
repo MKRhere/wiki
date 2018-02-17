@@ -3,6 +3,10 @@
 ## Read carefully, use at your own risk
 ## Add 'source path/to/mkr.sh' in your ~/.bashrc or ~/.zshrc
 
+# Actually clear your terminal
+
+alias cls='printf "\033c"'
+
 # Simpler apt commands
 
 alias update="sudo apt-get update"
