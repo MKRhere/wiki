@@ -17,13 +17,15 @@ alias install="sudo apt-get install"
 
 # Directory management
 
-## mk <dir>
+## mk
+## Usage: mk <dir>
 ## Makes a new directory and enters it
 mk () {
 	mkdir "$1"
 	cd "$_"
 }
 
+## rmd
 ## Usage: rmd [dir]
 ## Use with caution: Removes current working directory and changes to one up level
 ## If an argument is passed, simply deletes that file or folder from current working directory
@@ -40,7 +42,15 @@ rmd () {
 
 # Git commands
 
-## Usage: push "<Commit Message>" [remote branch]
+## commit
+## Usage: commit <commit-message>
+commit () {
+	git add .
+	git commit -m "$1"
+}
+
+## push
+## Usage: push <commit-message> [remote branch]
 ## if only commit message is present, pushes to default upstream
 
 push () {
@@ -55,14 +65,20 @@ push () {
 
 # Systemctl commands
 
+## status
+## Usage: status <daemon>
 status () {
 	sudo systemctl status "$1"
 }
 
+## start
+## Usage: start <daemon>
 start () {
 	sudo systemctl start "$1"
 }
 
+## stop
+## Usage: stop <daemon>
 stop () {
 	sudo systemctl stop "$1"
 }
