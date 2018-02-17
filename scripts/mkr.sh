@@ -1,3 +1,8 @@
+# mkr.sh
+## A list of commands to simplify my life
+## Read carefully, use at your own risk
+## Add 'source path/to/mkr.sh' in your ~/.bashrc or ~/.zshrc
+
 # Simpler apt commands
 
 alias update="sudo apt-get update"
@@ -12,12 +17,14 @@ alias install="sudo apt-get install"
 
 # Directory management
 
+## mk <dir>
 ## Makes a new directory and enters it
 mk () {
 	mkdir "$1"
 	cd "$_"
 }
 
+## Usage: rmd [dir]
 ## Use with caution: Removes current working directory and changes to one up level
 ## If an argument is passed, simply deletes that file or folder from current working directory
 
@@ -33,7 +40,7 @@ rmd () {
 
 # Git commands
 
-## push "Commit Message" origin master
+## Usage: push "<Commit Message>" [remote branch]
 ## if only commit message is present, pushes to default upstream
 
 push () {
