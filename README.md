@@ -1,7 +1,6 @@
 # mkrhere/wiki
 
-<details>
-<summary>Linux</summary>
+## Debian GNU/Linux
 
 ### AMD Radeon drivers
 
@@ -64,5 +63,3 @@ sudo killall -9 pulseaudio
 sudo systemctl --user enable pulseaudio.socket
 pulseaudio --start
 ```
-
-</details>
