@@ -17,7 +17,7 @@ echo "source ~/.mkr/mkr.sh" >> ~/.zshrc
 ## Commands
 
 - General
-	- cls
+	- `cls`
 - apt
 	- `i <package-name>`
 	- `install <package-name>`
