@@ -8,10 +8,14 @@ Add this script to your `~/.bashrc` or `~/.zshrc`:
 
 ```bash
 mkdir ~/.mkr && curl https://raw.githubusercontent.com/MKRhere/wiki/master/scripts/mkr.sh -o ~/.mkr/mkr.sh
+
 # if using bash
 echo "source ~/.mkr/mkr.sh" >> ~/.bashrc
 # or zsh
 echo "source ~/.mkr/mkr.sh" >> ~/.zshrc
+
+# updating script
+curl https://raw.githubusercontent.com/MKRhere/wiki/master/scripts/mkr.sh -o ~/.mkr/mkr.sh
 ```
 
 ## Commands

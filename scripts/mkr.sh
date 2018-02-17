@@ -1,4 +1,5 @@
 # mkr.sh
+
 ## A list of commands to simplify my life
 ## Read carefully, use at your own risk
 ## Add 'source path/to/mkr.sh' in your ~/.bashrc or ~/.zshrc
