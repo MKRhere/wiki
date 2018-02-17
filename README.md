@@ -3,28 +3,26 @@
 <details>
 <summary>Linux</summary>
 
-<details>
-<summary>AMD Radeon drivers</summary>
+### AMD Radeon drivers
+
 This package contains the binary firmware for AMD/ATI graphics chips supported by the radeon, amdgpu and r128 drivers, not included in the free repos.
 
 ```bash
 sudo apt-get install firmware-amd-graphics
 ```
-</details>
+### dirmngr
 
-<details>
-<summary>dirmngr</summary>
 dirmngr is a server for managing and downloading OpenPGP and X.509 certificates, as well as updates and status signals related to those certificates. For OpenPGP, this means pulling from the public HKP/HKPS keyservers, or from LDAP servers. For X.509 this includes Certificate Revocation Lists (CRLs) and Online Certificate Status Protocol updates (OCSP). It is capable of using tor for network access.
 
 ```bash
 sudo apt-get install dirmngr
 ```
-</details>
 
-<details>
-<summary>MongoDB</summary>
+### MongoDB
 
-#### Installing on Debian Stretch
+MongoDB doesn't have official packages for Debian Stretch at this moment, so we'd have to install from the Jessie repository which will throw an error saying the dependency `libssl1.0.0` will not be satisfied.
+
+#### Installing MongoDB on Debian Stretch
 
 ```bash
 # Get signing keys
