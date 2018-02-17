@@ -1,4 +1,4 @@
-# mkrhere/wiki
+# MKRhere/wiki
 
 A private repo for common problems.
 
