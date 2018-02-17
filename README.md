@@ -8,6 +8,7 @@
 This package contains the binary firmware for AMD/ATI graphics chips supported by the radeon, amdgpu and r128 drivers, not included in the free repos.
 
 ```bash
+sudo apt-get update
 sudo apt-get install firmware-amd-graphics
 ```
 ### dirmngr
@@ -15,8 +16,20 @@ sudo apt-get install firmware-amd-graphics
 dirmngr is a server for managing and downloading OpenPGP and X.509 certificates, as well as updates and status signals related to those certificates. For OpenPGP, this means pulling from the public HKP/HKPS keyservers, or from LDAP servers. For X.509 this includes Certificate Revocation Lists (CRLs) and Online Certificate Status Protocol updates (OCSP). It is capable of using tor for network access.
 
 ```bash
+sudo apt-get update
 sudo apt-get install dirmngr
 ```
+
+### Intel WiFi drivers
+
+Intel WiFi drivers are not included in the Debian official repos. They are only available from non-free repo.
+
+```bash
+echo "deb http://httpredir.debian.org/debian/ stretch main contrib non-free" >> /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install firmware-iwlwifi
+```
+
 ### MongoDB
 
 MongoDB doesn't have official packages for Debian Stretch at this moment, so we'd have to install from the Jessie repository which will throw an error saying the dependency `libssl1.0.0` will not be satisfied.
@@ -37,6 +50,7 @@ sudo dpkg -i "$TEMP_DEB"
 rm -f "$TEMP_DEB"
 
 # Install mongodb
+sudo apt-get update
 sudo apt-get install mongodb-org
 ```
 
