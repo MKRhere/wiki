@@ -47,6 +47,16 @@ rmd () {
 
 # Git commands
 
+## pull
+## Usage: pull [remote branch]
+pull () {
+	if [ "$1" ]; then
+		git pull "$1" "$2"
+	else
+		git pull
+	fi
+}
+
 ## commit
 ## Usage: commit <commit-message>
 commit () {
@@ -94,4 +104,5 @@ stop () {
 ## Usage: mkr-update
 mkr-update () {
 	curl https://raw.githubusercontent.com/MKRhere/wiki/master/scripts/mkr.sh -o ~/.mkr/mkr.sh
+	source ~/.mkr/mkr.sh
 }
