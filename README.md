@@ -119,6 +119,32 @@ sudo systemctl --user enable pulseaudio.socket
 pulseaudio --start
 ```
 
+### Peek
+
+[Peek](https://github.com/phw/peek#debian) is a GIF recorder for Linux.
+
+There are no official Debian packages, yet, but you can easily create your own .deb package for Peek. First, install the build dependencies:
+
+```shell
+sudo apt install cmake valac libgtk-3-dev libkeybinder-3.0-dev libxml2-utils gettext txt2man
+```
+
+Then build Peek and package it:
+
+```shell
+git clone https://github.com/phw/peek.git
+mkdir peek/build
+cd peek/build
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=OFF ..
+make package
+```
+
+This will create the package peek-x.y.z-Linux.deb (where x.y.z is the current version). You can install it with dpkg:
+
+```shell
+sudo dpkg -i peek-*-Linux.deb
+```
+
 ### RabbitMQ Server
 
 Installing RabbitMQ Server on Debian Stretch fails because the dependent packages `erlang-nox` and `esl-erlang` on Debian repos are slightly outdated. Hence, follow these instructions:
@@ -146,3 +172,16 @@ sudo apt-get install rabbitmq-server
 ```
 
 RabbitMQ Server should have automatically started by now, but if it is not, run `rabbitmq-server start` (sudo if required).
+
+### _MISC
+
+<details>Useful Linux commands</details>
+
+<description>
+
+- Information about graphic card:
+	- `sudo lspci -v -s 01:00.0`
+	- `inxi -Gx`
+- List all shell commands available `compgen -c` (use with `grep`?)
+
+</description>
