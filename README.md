@@ -14,6 +14,19 @@ This package contains the binary firmware for AMD/ATI graphics chips supported b
 sudo apt-get update
 sudo apt-get install firmware-amd-graphics
 ```
+
+### Crystal
+
+To install Crystal, you will need to add their apt repository. Their `setup.sh` script helps simplify this.
+
+⚠️ Needs `dirmngr` to get authentication keys
+
+```shell
+curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
+sudo apt-get install build-essential
+sudo apt-get install crystal
+```
+
 ### dirmngr
 
 dirmngr is a server for managing and downloading OpenPGP and X.509 certificates, as well as updates and status signals related to those certificates. For OpenPGP, this means pulling from the public HKP/HKPS keyservers, or from LDAP servers. For X.509 this includes Certificate Revocation Lists (CRLs) and Online Certificate Status Protocol updates (OCSP). It is capable of using tor for network access.
@@ -159,7 +172,7 @@ sudo apt update
 # Try installing erlang-nox
 sudo apt-get install erlang-nox
 
-# You might get this errors:
+# You might get these errors:
 # erlang-nox : Depends: erlang-diameter but it is not going to be installed
 #              Depends: erlang-eldap but it is not going to be installed
 # If you do so, try this:
@@ -175,13 +188,11 @@ RabbitMQ Server should have automatically started by now, but if it is not, run 
 
 ### _MISC
 
-<details>Useful Linux commands</details>
-
-<description>
+<details>
+<summary>Useful Linux commands</summary>
 
 - Information about graphic card:
 	- `sudo lspci -v -s 01:00.0`
 	- `inxi -Gx`
 - List all shell commands available `compgen -c` (use with `grep`?)
-
-</description>
+</details>
