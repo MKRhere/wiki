@@ -8,6 +8,13 @@
 
 alias cls='printf "\033c"'
 
+# Copy to clipboard
+
+## clip
+## Usage: cat <file> | clip
+## Copies output from previous command into clipboard
+alias clip="xclip -selection clipboard"
+
 # Simpler apt commands
 
 alias update="sudo apt-get update"
