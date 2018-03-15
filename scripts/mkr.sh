@@ -112,4 +112,5 @@ stop () {
 mkr-update () {
 	curl https://raw.githubusercontent.com/MKRhere/wiki/master/scripts/mkr.sh -o ~/.mkr/mkr.sh
 	source ~/.mkr/mkr.sh
+	echo "[mkr.sh] Done updating script! Enjoy."
 }
