@@ -4,7 +4,7 @@ I made this script for my own convenience. Use at your own risk. Plenty of comme
 
 ## Install
 
-Add this script to your `~/.bashrc` or `~/.zshrc`:
+Automatically add this script to your `~/.bashrc` or `~/.zshrc`:
 
 ```bash
 mkdir ~/.mkr && curl https://raw.githubusercontent.com/MKRhere/wiki/master/scripts/mkr.sh -o ~/.mkr/mkr.sh
@@ -14,6 +14,9 @@ echo "source ~/.mkr/mkr.sh" >> ~/.bashrc
 # or zsh
 echo "source ~/.mkr/mkr.sh" >> ~/.zshrc
 
+# To start using right away without waiting for shell restart
+source ~/.mkr/mkr.sh
+
 # updating script
 mkr-update
 ```
@@ -21,19 +24,20 @@ mkr-update
 ## Commands
 
 - General
-	- `cls`
+	- `cls` : Clears screen
+	- `clip` : Copies to clipboard
 - apt
-	- `i <package-name>`
-	- `install <package-name>`
-	- `update`
-	- `purge <package-name>`
-	- `ar` / `autoremove`
+	- `i <package-names...>` : Accepts prompts and installs packages
+	- `install <package-names...>` : Installs packages without auto-accepting
+	- `update` : Equivalent to `apt-get update`
+	- `purge <package-names...>` : Removes packages
+	- `ar` / `autoremove` : Equivalent to `apt autoremove`
 - Directories
-	- `mk <dir>`
-	- `rmd [dir]`
+	- `mk <dir>` : Makes dir and changes into it
+	- `rmd [dir]` : Removes current directory and moves up OR removes directory by given name
 - git
-	- `commit <commit-message>`
-	- `push <commit-message> [remote branch]`
+	- `commit <commit-message>` : Adds all untracked files and commits them
+	- `push <commit-message> [remote branch]` : Adds all untracked files, commits and pushes them
 - systemctl
 	- `status <daemon>`
 	- `start <daemon>`
