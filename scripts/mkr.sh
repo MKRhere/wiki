@@ -54,6 +54,26 @@ rmd () {
 
 # Git commands
 
+## low-level `dot-git-cmd`, to be used for `dotgit` command
+alias dot-git-cmd="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+
+# Manage dotfiles repo
+# Usage: dotgit [commands...]
+dotgit () {
+	if [[ $1 == "-d" || $1 == "--diff" ]]; then
+		dot-git-cmd diff
+	elif [[ $1 == "-u" || $1 == "--update" ]]; then
+		dot-git-cmd add $HOME
+		dot-git-cmd commit -m date
+	elif [[ $1 == "-p" || $1 == "--push" ]]; then
+		dot-git-cmd add $HOME
+		dot-git-cmd commit -m date
+		dot-git-cmd push
+	else
+		dot-git-cmd $1
+	fi
+}
+
 ## pull
 ## Usage: pull [remote branch]
 pull () {
@@ -74,7 +94,6 @@ commit () {
 ## push
 ## Usage: push <commit-message> [remote branch]
 ## if only commit message is present, pushes to default upstream
-
 push () {
 	git add .
 	git commit -m "$1"
