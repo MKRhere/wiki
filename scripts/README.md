@@ -38,6 +38,9 @@ mkr-update
 - git
 	- `commit <commit-message>` : Adds all untracked files and commits them
 	- `push <commit-message> [remote branch]` : Adds all untracked files, commits and pushes them
+	- `dotgit [commands...]` : Requires a `~/.dotfiles` bare repo to exist
+		- `-u` to commit to the dotgit repo
+		- `-p` to push the dotgit repo to remote
 - systemctl
 	- `status <daemon>`
 	- `start <daemon>`
