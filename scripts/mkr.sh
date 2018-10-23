@@ -32,8 +32,8 @@ alias install="sudo apt-get install"
 ## mk
 ## Usage: mk <dir>
 ## Makes a new directory and enters it
-mk () {
-	mkdir "$1"
+mkd () {
+	mkdir -p "$1"
 	cd "$_"
 }
 
