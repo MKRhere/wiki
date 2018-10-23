@@ -33,7 +33,7 @@ mkr-update
 	- `purge <package-names...>` : Removes packages
 	- `ar` / `autoremove` : Equivalent to `apt autoremove`
 - Directories
-	- `mk <dir>` : Makes dir and changes into it
+	- `mkd </path/to/dir>` : Creates dir at given path and changes cwd to it
 	- `rmd [dir]` : Removes current directory and moves up OR removes directory by given name
 - git
 	- `commit <commit-message>` : Adds all untracked files and commits them
