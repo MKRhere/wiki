@@ -36,6 +36,7 @@ mkr-update
 	- `mkd </path/to/dir>` : Creates dir at given path and changes cwd to it
 	- `rmd [dir]` : Removes current directory and moves up OR removes directory by given name
 - git
+	- `git-graph` : Opens a pretty commit log graph
 	- `commit <commit-message>` : Adds all untracked files and commits them
 	- `push <commit-message> [remote branch]` : Adds all untracked files, commits and pushes them
 	- `dotgit [commands...]` : Requires a `~/.dotfiles` bare repo to exist

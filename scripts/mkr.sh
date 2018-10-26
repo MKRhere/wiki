@@ -20,8 +20,7 @@ alias clip="xclip -selection clipboard"
 alias update="sudo apt-get update"
 alias i="sudo apt-get install -y"
 alias purge="sudo apt purge -y"
-alias ar="sudo apt autoremove -y"
-alias autoremove="sudo apt autoremove -y" # Alias of ar
+alias autoremove="sudo apt autoremove -y"
 
 ## To install without -y
 
@@ -54,7 +53,11 @@ rmd () {
 
 # Git commands
 
-## low-level `dot-git-cmd`, to be used for `dotgit` command
+## git graph
+## Usage: git graph
+alias git-graph='git log --graph --date-order --pretty=format:"%C(bold yellow)%h%C(auto)%d %C(cyan)%an%C(bold white) %s %C(auto)%C(green)(%ar)%C(reset)"'
+
+## lower-level `dot-git-cmd`, to be used for `dotgit` command
 alias dot-git-cmd="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 # Manage dotfiles repo
