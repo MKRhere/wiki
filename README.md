@@ -140,6 +140,16 @@ This will create the package peek-x.y.z-Linux.deb (where x.y.z is the current ve
 sudo dpkg -i peek-*-Linux.deb
 ```
 
+### resolv.conf
+
+Trouble with random daemons overwriting `resolv.conf`? Unsure if it's network manager or netconfig or dhcpcd? Simple hack:
+
+```shell
+chattr +i /etc/resolv.conf
+```
+
+> Note to future self: If later you found the right way to do this, reverse the above by doing `chattr -i /etc/resolv.conf` and fix it.
+
 ### RabbitMQ Server
 
 Installing RabbitMQ Server on Debian Stretch fails because the dependent packages `erlang-nox` and `esl-erlang` on Debian repos are slightly outdated. Hence, follow these instructions:
