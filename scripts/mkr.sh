@@ -55,7 +55,7 @@ rmd () {
 
 ## git graph
 ## Usage: git graph
-alias git-graph='git log --graph --date-order --pretty=format:"%C(bold yellow)%h%C(auto)%d %C(cyan)%an%C(bold white) %s %C(auto)%C(green)(%ar)%C(reset)"'
+git config --global alias.graph 'log --graph --date-order --pretty=format:"%C(bold yellow)%h%C(auto)%d %C(cyan)%an%C(bold white) %s %C(auto)%C(green)(%ar)%C(reset)"'
 
 ## lower-level `dot-git-cmd`, to be used for `dotgit` command
 alias dot-git-cmd="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
