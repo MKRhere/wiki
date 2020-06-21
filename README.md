@@ -4,6 +4,23 @@ A personal repository for common problems and solutions.
 
 I created this repo so that I don't have to go back and lookup solutions to problems I've already encountered. Feel free to use this repo if it solves your own problems, and raise an issue if you think something can be less hacky or retarded.
 
+## Table of Content
+
+- [Debian GNU/Linux](#debian-gnulinux)
+    - [AMD Radeon drivers](#amd-radeon-drivers)
+    - [Crystal](#crystal)
+    - [dirmngr](#dirmngr)
+    - [Erlang](#erlang)
+    - [Intel WiFi drivers](#intel-wifi-drivers)
+    - [MongoDB](#mongodb)
+    - [nodejs](#nodejs)
+        - [Installing and using ~~nvm~~ nvs](#installing-and-using-nvm-nvs)
+    - [PulseAudio](#pulseaudio)
+    - [Peek](#peek)
+    - [resolv.conf](#resolvconf)
+    - [RabbitMQ Server](#rabbitmq-server)
+    - [_MISC](#_misc)
+
 ## Debian GNU/Linux
 
 ### AMD Radeon drivers
