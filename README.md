@@ -4,7 +4,7 @@ A personal repository for common problems and solutions.
 
 I created this repo so that I don't have to go back and lookup solutions to problems I've already encountered. Feel free to use this repo if it solves your own problems, and raise an issue if you think something can be less hacky or retarded.
 
-## Table of Content
+## Table of contents
 
 - [Debian GNU/Linux](#debian-gnulinux)
     - [AMD Radeon drivers](#amd-radeon-drivers)
