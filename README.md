@@ -167,6 +167,12 @@ chattr +i /etc/resolv.conf
 
 > Note to future self: If later you found the right way to do this, reverse the above by doing `chattr -i /etc/resolv.conf` and fix it.
 
+#### Future self:
+
+To add nameservers before `resolv.conf`, add `prepend domain-name-servers 127.0.0.1;` to `/etc/dhcp/dhclient.conf`.
+
+As implied, `nameserver 127.0.0.1` is prepended to `/etc/resolv.conf`
+
 ### RabbitMQ Server
 
 Installing RabbitMQ Server on Debian Stretch fails because the dependent packages `erlang-nox` and `esl-erlang` on Debian repos are slightly outdated. Hence, follow these instructions:
