@@ -7,10 +7,7 @@ I created this repo so that I don't have to go back and lookup solutions to prob
 ## Table of contents
 
 - [Debian GNU/Linux](#debian-gnulinux)
-    - [AMD Radeon drivers](#amd-radeon-drivers)
-    - [Crystal](#crystal)
-    - [dirmngr](#dirmngr)
-    - [Erlang](#erlang)
+    - [Nvidia drivers](#nvidia-drivers)
     - [Intel WiFi drivers](#intel-wifi-drivers)
     - [MongoDB](#mongodb)
     - [nodejs](#nodejs)
@@ -23,57 +20,22 @@ I created this repo so that I don't have to go back and lookup solutions to prob
 
 ## Debian GNU/Linux
 
-### AMD Radeon drivers
+### NVIDIA drivers with CUDA
 
-This package contains the binary firmware for AMD/ATI graphics chips supported by the radeon, amdgpu and r128 drivers, not included in the official ISO.
+Don't fight it. Just download the entire bundle from NVIDIA. Get the latest CUDA deb URL from https://developer.nvidia.com/cuda-downloads and follow the instructions below:
 
 ```shell
+wget https://developer.download.nvidia.com/compute/cuda/11.7.0/local_installers/cuda-repo-debian11-11-7-local_11.7.0-515.43.04-1_amd64.deb
+sudo dpkg -i cuda-repo-debian11-11-7-local_11.7.0-515.43.04-1_amd64.deb
+sudo cp /var/cuda-repo-debian11-11-7-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo add-apt-repository contrib
 sudo apt-get update
-sudo apt-get install firmware-amd-graphics
-```
-
-### Crystal
-
-To install Crystal, you will need to add their apt repository. Their `setup.sh` script helps simplify this.
-
-⚠️ Needs `dirmngr` to get authentication keys
-
-```shell
-curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
-sudo apt-get install build-essential
-sudo apt-get install crystal
-```
-
-### dirmngr
-
-dirmngr is a server for managing and downloading OpenPGP and X.509 certificates, as well as updates and status signals related to those certificates. For OpenPGP, this means pulling from the public HKP/HKPS keyservers, or from LDAP servers. For X.509 this includes Certificate Revocation Lists (CRLs) and Online Certificate Status Protocol updates (OCSP). It is capable of using tor for network access.
-
-```shell
-sudo apt-get update
-sudo apt-get install dirmngr
-```
-
-### Erlang
-
-Installing `erlang` from erlang-solutions:
-
-```shell
-wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
-sudo dpkg -i erlang-solutions_1.0_all.deb
-
-sudo apt-get update
-
-# Install one of the following
-
-# Install erlang
-sudo apt-get install erlang
-# or install esl-erlang - includes the Erlang/OTP platform and all of its applications
-sudo apt-get install esl-erlang
+sudo apt-get -y install cuda
 ```
 
 ### Intel WiFi drivers
 
-Intel WiFi drivers are not included in the Debian official repos. They are only available from non-free repo.
+Intel WiFi drivers are not included in the Debian official repos. They are only available from the non-free repo.
 
 ```shell
 echo "deb http://httpredir.debian.org/debian/ stretch main contrib non-free" >> /etc/apt/sources.list
@@ -85,34 +47,20 @@ sudo apt-get install firmware-iwlwifi
 
 ~~MongoDB doesn't have official packages for Debian Stretch at this moment, so we'd have to install from the Jessie repository which will throw an error saying the dependency `libssl1.0.0` will not be satisfied.~~
 
-MongoDB has Debian Stretch packages now!
-
-```shell
-# Get signing keys
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-
-# Add the Debian Stretch repo
-echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
-
-# Install mongodb
-sudo apt-get update
-sudo apt-get install mongodb-org
-```
+MongoDB has [Debian Buster packages now](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-debian/), which works fine on Debian Bullseye.
 
 ### nodejs
 
-nodejs apt repository is several years behind, so add nodesource repos. nodejs 9.x (current version)
+Install Node globally from [Nodesource](https://github.com/nodesource/distributions#deb=):
 
 ```shell
 # Using Debian
 sudo su
-curl -sL https://deb.nodesource.com/setup_9.x | bash -
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 apt-get install -y nodejs
 ```
 
-#### Installing and using ~~nvm~~ nvs
-
-You may need to use multiple node versions on the same machine. ~~`nvm` will be very useful in this case.~~ [`nvs`](https://github.com/jasongin/nvs) is a much better, cross-platform implementation.
+Install Node locally (preferred) using [NVS](https://github.com/jasongin/nvs):
 
 ```shell
 export NVS_HOME="$HOME/.nvs"
@@ -172,34 +120,6 @@ chattr +i /etc/resolv.conf
 To add nameservers before `resolv.conf`, add `prepend domain-name-servers 127.0.0.1;` to `/etc/dhcp/dhclient.conf`.
 
 As implied, `nameserver 127.0.0.1` is prepended to `/etc/resolv.conf`
-
-### RabbitMQ Server
-
-Installing RabbitMQ Server on Debian Stretch fails because the dependent packages `erlang-nox` and `esl-erlang` on Debian repos are slightly outdated. Hence, follow these instructions:
-
-Install [Erlang](#erlang) first.
-
-```shell
-# Add RabbitMQ repo from bintray to sources, but don't install it yet
-echo "deb https://dl.bintray.com/rabbitmq/debian stretch main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list
-sudo apt update
-
-# Try installing erlang-nox
-sudo apt-get install erlang-nox
-
-# You might get these errors:
-# erlang-nox : Depends: erlang-diameter but it is not going to be installed
-#              Depends: erlang-eldap but it is not going to be installed
-# If you do so, try this:
-sudo apt-get install erlang-diameter erlang-eldap
-# Now this should install properly:
-sudo apt-get install erlang-nox
-
-# Now actually install RabbitMQ:
-sudo apt-get install rabbitmq-server
-```
-
-RabbitMQ Server should have automatically started by now, but if it is not, run `rabbitmq-server start` (sudo if required).
 
 ### _MISC
 
