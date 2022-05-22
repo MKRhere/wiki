@@ -8,6 +8,7 @@ I created this repo so that I don't have to go back and lookup solutions to prob
 
 - [Debian GNU/Linux](#debian-gnulinux)
     - [Nvidia drivers](#nvidia-drivers)
+    - [OBS with NVENC](#obs-with-nvenc)
     - [Intel WiFi drivers](#intel-wifi-drivers)
     - [MongoDB](#mongodb)
     - [nodejs](#nodejs)
@@ -33,6 +34,22 @@ sudo apt-get update
 sudo apt-get -y install cuda
 ```
 
+### OBS with NVENC
+
+Once you've installed NVIDIA drivers with CUDA support above, do this (adapted [from Arch Wiki](https://wiki.archlinux.org/title/NVIDIA#Hardware_accelerated_video_encoding_with_NVENC)):
+
+NVENC requires the `nvidia_uvm` module and the creation of related device nodes under `/dev`. Invoking the nvidia-modprobe utility automatically creates them. You can create /etc/udev/rules.d/70-nvidia.rules to run it automatically:
+
+```txt
+/etc/udev/rules.d/70-nvidia.rules
+
+ACTION=="add", DEVPATH=="/bus/pci/drivers/nvidia", RUN+="/usr/bin/nvidia-modprobe -c0 -u"
+```
+
+Running `nvidia-modprobe -c0 -u` once also does it.
+
+After ensuring `/dev/nvidia-uvm` exists, install OBS from Flatpak to save the trouble of installing it by hand. Choose NVENC and hit record. It just works now!
+
 ### Intel WiFi drivers
 
 Intel WiFi drivers are not included in the Debian official repos. They are only available from the non-free repo.
@@ -44,8 +61,6 @@ sudo apt-get install firmware-iwlwifi
 ```
 
 ### MongoDB
-
-~~MongoDB doesn't have official packages for Debian Stretch at this moment, so we'd have to install from the Jessie repository which will throw an error saying the dependency `libssl1.0.0` will not be satisfied.~~
 
 MongoDB has [Debian Buster packages now](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-debian/), which works fine on Debian Bullseye.
 
