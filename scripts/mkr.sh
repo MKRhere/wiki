@@ -4,6 +4,9 @@
 ## Read carefully, use at your own risk
 ## Add 'source path/to/mkr.sh' in your ~/.bashrc or ~/.zshrc
 
+mkdir -p $HOME/.mkr/bin
+export PATH="$PATH:$HOME/.mkr/bin"
+
 # Actually clear your terminal
 
 alias cls='printf "\033c"'
@@ -14,17 +17,6 @@ alias cls='printf "\033c"'
 ## Usage: cat <file> | clip
 ## Copies output from previous command into clipboard
 alias clip="xclip -selection clipboard"
-
-# Simpler apt commands
-
-alias update="sudo apt-get update"
-alias i="sudo apt-get install -y"
-alias purge="sudo apt purge -y"
-alias autoremove="sudo apt autoremove -y"
-
-## To install without -y
-
-alias install="sudo apt-get install"
 
 # Directory management
 
@@ -42,7 +34,7 @@ mkd () {
 ## If an argument is passed, simply deletes that file or folder from current working directory
 
 rmd () {
-	CWD="$(dirname $(realpath $0))"
+	CWD="$PWD"
 	if [ "$1" ]; then
 		rm -rf "$1"
 	else
@@ -57,55 +49,6 @@ rmd () {
 ## Usage: git graph
 git config --global alias.graph 'log --graph --date-order --pretty=format:"%C(bold yellow)%h%C(auto)%d %C(cyan)%an%C(bold white) %s %C(auto)%C(green)(%ar)%C(reset)"'
 
-## lower-level `dot-git-cmd`, to be used for `dotgit` command
-alias dot-git-cmd="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-
-# Manage dotfiles repo
-# Usage: dotgit [commands...]
-dotgit () {
-	if [[ "$1" == "-d" || "$1" == "--diff" ]]; then
-		dot-git-cmd diff
-	elif [[ "$1" == "-u" || "$1" == "--update" ]]; then
-		dot-git-cmd add $HOME
-		dot-git-cmd commit -m "$(date)"
-	elif [[ "$1" == "-p" || "$1" == "--push" ]]; then
-		dot-git-cmd add "$HOME"
-		dot-git-cmd commit -m date
-		dot-git-cmd push
-	else
-		dot-git-cmd "$1"
-	fi
-}
-
-## pull
-## Usage: pull [remote branch]
-pull () {
-	if [ "$1" ]; then
-		git pull "$1" "$2"
-	else
-		git pull
-	fi
-}
-
-## commit
-## Usage: commit <commit-message>
-commit () {
-	git add .
-	git commit -m "$1"
-}
-
-## push
-## Usage: push <commit-message> [remote branch]
-## if only commit message is present, pushes to default upstream
-push () {
-	git add .
-	git commit -m "$1"
-	if [ "$2" ]; then
-		git push -u "$2" "$3"
-	else
-		git push
-	fi
-}
 
 # Systemctl commands
 
